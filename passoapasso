@@ -1,0 +1,164 @@
+# Formulario - Criar um projeto [ng new FormularioOuvidoria]
+Instalar módulos [npm install] na pasta do projeto
+testar aplicação [npm start]
+instalando boot strap  e font-awesome -> npm i bootstrap font-awesome
+Configurando o bootstrap, compartilhando o boot strap por toda aplicação através do arquivo angular.json através do atributo style -> “./node_modules/bootstrap/dist/CSS/bootstrap.min.CSS”
+Configurando o  font-awesome -> compartilhando o boot strap por toda aplicação através do arquivo angular.json através do atributo style -> “./node_modules/font-awesome/CSS/font-awesome.CSS”
+instalando o MATERIAL -> ng add @angular/material@14
+No modulo administrativo, incluir no vetor IMPORTS o modulo do componente Material desejado e importar no arquivo onde vai ser implementado
+criar o módulo administrativo -> ng generate module administrativo --routing
+criar o componente principal do módulo -> ng g c administrativo, este compenente irá agrupar todos os outros componentes
+exportar componente administrativo, no modulo do componente e dentro NgModule, vamos colocá-lo no atributo exports.
+no app.module, que é o principal módulo do nosso projeto, na raiz, no app.module.ts, podemos importar o  modulo administrativo.
+inclui o componente sugestao -> ng g c administrativo/denuncia
+inclui o componente denuncia -> ng g c administrativo/sugestao
+inclui o componente denuncia -> ng g c administrativo/reclamacao
+inclui o componente denuncia -> ng g c administrativo/resultado
+inclui o componente denuncia -> ng g c administrativo/seletor
+aplicar a técnica lazy load, no ‘app.component.html’ vamos utilizar uma diretiva do Angular chamada router outlet. Digitamos <router-outlet></router-outlet>.
+app-routing-module e vamos no nosso array de rotas ...
+no administrativo-routing-module será definida as rotas filhas
+no componenete administrativo colara a tag  <router-outlet></router-outlet>.
+injetar router no componente principal no constructor -> private router: Router
+no administrativo.module, inserir o "import { FormsModule } from '@angular/forms';" para vincular o formModel para componente do moódulo administrativo
+no administrativo.module, no array Imports insira a "FormsModule"
+criar o campo sel no componente seletor, este campo ser usado para rotear os componetes
+no componete sugestão foi tratado um direcionamento para componete resultado com a opçaõ de voltar para o componete principal
+
+
+no módulo administrativo inserir os imports do material
+montar a interface gráfica do formulario reclamação
+gerar o medel reclamacao (interface) em shared\model
+no modulo administrativo importar o ReactiveFormsModule,
+importar no reclamação.ts "import { FormBuilder, Validators, FormGroup } from '@angular/forms';""
+no arquivo html vincular o formulário com os campos do model
+
+
+
+
+
+
+ng generate module lgpd --routing
+criar o componente principal do módulo -> ng g c lgpd
+ng g c lgpd/portabilidade
+ng g c lgpd/eliminacaoDP 
+ng g c lgpd/correcaoDP 
+
+no componenete administrativo colara a tag  <router-outlet></router-outlet>.
+injetar router no componente principal no constructor -> private router: Router
+
+no administrativo.module, inserir o "import { FormsModule } from '@angular/forms';" para vincular o formModel para componente do moódulo administrativo
+no administrativo.module, no array Imports insira a "FormsModule"
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+no app.module, que é o principal módulo do nosso projeto, na raiz, no app.module.ts, podemos importar o  modulo administrativo.
+
+aplicar a técnica lazy load, no ‘app.component.html’ vamos utilizar uma diretiva do Angular chamada router outlet. Digitamos <router-outlet></router-outlet>.
+app-routing-module e vamos no nosso array de rotas ...
+
+criar o campo sel no componente seletor, este campo ser usado para rotear os componetes
+no componete sugestão foi tratado um direcionamento para componete resultado com a opçaõ de voltar para o componete principal
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+############################################################################################
+
+[00:00] Antes de prosseguirmos com a criação das outras interfaces, vamos estruturar as nossas rotas e vamos fazer isso já usando a melhor prática: a técnica do lazy load. Vamos colocar na nossa IDE e no ‘app.component.html’ vamos apagar a declaração direta do nosso componente. Vamos utilizar uma diretiva do Angular chamada router outlet. Digitamos <router-outlet></router-outlet>.
+
+[00:29] Essa diretiva do Angular indica o ponto onde nessa diretiva será renderizado um conteúdo vindo de uma rota. Com isso nós vamos no ‘app.module.ts’ e vamos apagar a importação direta do nosso módulo, porque nós vamos importar esse módulo da rota, sob demanda, é isso que significa o lazy load.
+
+[01:03] Vamos no app-routing-module e vamos no nosso array de rotas, nós vamos adicionar dois elementos. O primeiro, vamos falar para o Angular que quando o nosso usuário acessar o nosso site sem nenhuma rota, sem nenhuma sub rota definida, ele vai acessar a página de home. Digitamos { > path:'' > pathMatch > }.
+
+[01:43] Esse atributo vai informar o Angular para tirar os espaços. Se você não colocar isso, se o usuário entrar com o nome do seu site, ele não vai identificar o espaço em branco, o pathMatch faz isso. No atributo full quer dizer que o Angular vai fazer esse tratamento.
+
+[02:07] Assim que ele acessar sem nenhum atributo, ele vai ser redirecionado redirectTo: 'home', > }, - assim que ele acessar ele vai para o atributo home.
+
+[02:24] Vamos agora configurar o home, é aqui que a técnica do lazy load aparece. Ela não é muito complicada, basicamente eu vou colocar na minha rota o atributo ‘loadChildren’, eu vou mandar uma função que no momento que o usuário acessar essa rota e o Angular vai executar essa função para revisitar o módulo sob demanda, ou seja, somente quando o meu usuário acessar a rota, ‘path: home'<, > loadChildren: ()=- import('./home/home.module').
+
+[03:41] Essa função import retorna uma promisse. Eu vou resolver essa promisse, eu vou colocar uma variável ‘m’, por exemplo - then ((m)=-). Esse arquivo vai conter um módulo. Qual que é o nome desse módulo? O m.HomeModule.
+
+[04:17] O import é uma função do próprio JavaScript, do S6, assim que o meu usuário acessar essa home, o Angular vai carregar esse módulo dinamicamente.
+
+[04:34] Por fim, vamos configurar as rotas do módulo. Observe que quando nós é encapsulamos as nossas interfaces em módulos independentes até o arquivo de rota fica mais simplificado.
+
+[04:49] Porque no route ele vai para home. As rotas auxiliares de home não vão ficar nesse arquivo, vão ficar no módulo de ‘home’. Vamos na nossa pasta home e no arquivo home-routing.module.ts. Na minha rota eu vou criar o elemento com atributo path. Qual vai ser o caminho para ele chegar aqui? Vai ser vazio - [ > { > path: '', > } > ].
+
+[05:28] Mas vazio não é a home? Acontece que assim que o usuário acessa a rota home, ele é direcionado para essa rota. Nessa rota, entenda que cada elemento que eu criar aqui é do ponto de vista somente do módulo. Eu não estou enxergando os outros módulos, estou só enxergando as rotas desse módulo. A nossa primeira rota desse módulo é o componente home. Eu vou colocar component: HomeComponent.
+
+[06:06] Vamos executar novamente Abre Cmder. Ele já compilou, mas eu vou para a compilação para vocês notarem uma coisa. Digito ng serve e aperto a tecla “Enter”. Digito Abre Gatitobook. Se formos na nossa interface, nós podemos notar que não mudou nada. Ou será que não?
+
+[06:32] Se nós analisarmos em nossa linha de comando, podemos notar que o Angulara criou Lazy Chunk Files, o home-module.js.
+
+[06:41] Nós reorganizamos as nossas rotas, ou seja, todas as rotas referentes à home colocaremos exclusivamente no módulo de home. Nós estamos isolados no módulo e podemos notar que o Angular já separou todo o código do módulo de home em um bundle separado. Esse bundle vai ser carregado somente quando o usuário acessar a rota.
+
+[07:09] Isso tudo que nós fizemos agora é o lazy load que, em uma tradução livre é “carregamento preguiçoso”, mas eu gosto de falar que é carregamento sob demanda. Com isso, para o nosso desenvolvimento, o nosso código ficar mais organizado e para o nosso usuário isso significa mais performance, porque não vai carregar um bundle gigante.
+
+[07:30] Imagine que a nossa aplicação vai crescer e ele vai escalar; ao invés de ele carregar todo o código Angular de uma vez, ele vai carregar somente quando acessar uma rota. Se ele nunca acessar a rota de ABM, por exemplo, o bundle no navegador dele nunca vai ter esse trecho de código. Nós economizamos banda, inclusive! Isso para celular, por exemplo, é muito importante.
+
+[07:55] Com isso nós temos nossas rotas configuradas e podemos continuar a criação das nossas interfaces. Vamos lá?
+
+################################################################
+
+
+[00:00] Vamos agora criar a nossa interface de login. Essa interface está relacionada com o módulo de home, vamos utilizar o nosso companheiro Angular ‘cli’ para criarmos o componente já no módulo correto.
+
+[00:16] Na nossa linha de comando Abre Cmder > Digita cd gatitobook\ na nossa pasta do Gatitobook. Vamos utilizar o comando ng g c home/login e apertar a tecla “Enter”. Digito g de generate, c de component.
+
+[00:31] E vamos colocar o caminho. Então a nossa tela de login vai estar no módulo home, login é o nome do nosso componente. O Angular cli já criou o componente, assim como criou o home e já atualizou o home.module declarando esse componente.
+
+[00:54] Vamos agora na nossa IDE, na pasta login que ele criou e vamos começar a criar o template do nosso formulário de login. Nós vamos em login.component.html e vamos apagar esse template que o Angular cli cria.
+
+[01:16] E vamos começar agora criar o nosso template, o nosso formulário. Vamos criar um formulário simples de HTML. Primeiro vou colocar meu título, vou colocar em forma de h4 - <h4></h4>. A classe do bootstrap eu vou colocar o ‘Login’ - ’h4 class=“text-center”>Login<h4/>.
+
+[01:46] E aqui vou criar um formulário HTML, o Angular aumenta as capacidades dos formulários HTML, e a classe do form também é do bootstrap - <form class=“form mt-4”>.
+
+[02:14] Lembrando que ele vai ficar no lado, no grid system ele vai ficar no lado quatro espaços do grid system do bootstrap. Vamos criar os nossos inputs, nossos campos de input - <div class=“form-group” >. A classe também é do bootstrap.
+
+[02:44] E dentro dessa form-group nós vamos ter um input - <input class=“form-control” placeholder=“Nome do usuário” />. A classe é CSS e o placeholder vai deixar cinza no fundo do input.
+
+[03:32] Eu vou criar outro group-form - <div classe=“form-group”>. Dentro desse form-group nós vamos criar outro input - <input type=“password” class=“form-control” placeholder ”Senha /.
+
+[04:35] Por fim, vamos criar nosso botão submit - <button typ=“submit” class=“btn btn-primary btn-block”></button>. Isso tudo é classe do bootstrap, não estamos falando de Angular.
+
+[05:14] O nome que vai estar escrito nesse botão será Login - <button typ=“submit” class=“btn btn-primary btn-block”>‘Login</button>‘.
+
+[05:23] Temos ele e agora precisamos projetar essa interface que nós criamos na nossa tela de home. Nós vamos utilizar o ‘router-outlet’, vamos voltar no nosso contrato HTML, home.component.html.
+
+[05:44] E no lugar desse “Bem Vindo” ao lado da foto do gatinho, nós vamos colocar um router-outlet - <router-outlet><router-outlet>, porque eu estou falando para o Angular que vai ter um conteúdo que vai ser projetado a partir de uma rota. Para mostrar no fim esse conteúdo.
+
+[06:19] Lembrando que aqui nós vamos ter duas telas: a tela de login e de cadastro de usuário. Eu coloquei no home.component.html o router-outletm. Eu vou no arquivo de rota home-routing.module.ts e na rota nós já temos a rota home - lembrando que ela é uma sub rota da nossa aplicação total, porque nós separamos em módulos carregados inclusive, de modo lazy load. Eu vou criar embaixo desse component.
+
+[06:55] Um atributo do tipo children, que é um elemento de sub rota, dentro de ‘home’ nós teremos sub rotas. Ele é um array de rotas, ‘children:‘.
+
+[07:11] No array eu vou passar o path:. Como a tela de login vai ser a tela de default, eu vou colocar que o path é vazio também. Quando criarmos a outra tela de cadastro, vamos colocar outro elemento aqui - { path: '', }.
+
+[07:33] E o componente que vai mostrar nessa sub rota, nesse router-outlet interno vai ser component: LoginComponent. Ele já importou, se não importou você importa do arquivo login.component.
+
+[07:50] O que esse children está falando? No router-outlet interno. Lembrando que temos um externo que é a nossa aplicação geral, mas nesse que criamos dentro do nosso componente de home. Quando for uma rota vazia, ele vai projetar o login.component.
+
+[08:10] Vamos executar agora o nosso projeto. Eu vou voltar no nosso IDE, digitar ng server --o e apertar a tecla “Enter”.
+
+[08:21] Ele já compilou, já abriu o browser e o nosso formulário está do lado da nossa foto do gatinho.
+
+[08:34] Ele ainda não está com funcionalidade, só criamos o template. Agora nós vamos começar a adicionar a funcionalidade de login. Vamos nessa?
+
+
+________________________________________________________________
+
+ng g c administrativo/reclamacao   
+
+
+Christian Carlos Ramalho Moreira <christian.moreira@tre-rj.jus.br>
+	
+seg., 17 de out. de 2022, 17:15
+	
+para Avelino
+Boa tarde!
+
+No mês de setembro/22 fiquei devendo 03:24h, vou compensar no mês de outubro, certamente usando os plantões.
+
+Obrigado
+
