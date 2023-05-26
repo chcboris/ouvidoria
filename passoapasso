@@ -2,9 +2,14 @@
 Instalar módulos [npm install] na pasta do projeto
 testar aplicação [npm start]
 instalando boot strap  e font-awesome -> npm i bootstrap font-awesome
-Configurando o bootstrap, compartilhando o boot strap por toda aplicação através do arquivo angular.json através do atributo style -> “./node_modules/bootstrap/dist/CSS/bootstrap.min.CSS”
+instalar dependencias npm install bootstrap jquery@3.3.1 popper.js@1.14.3 --save
+configurar o angular.json (verificar a linha 59)
 Configurando o  font-awesome -> compartilhando o boot strap por toda aplicação através do arquivo angular.json através do atributo style -> “./node_modules/font-awesome/CSS/font-awesome.CSS”
-instalando o MATERIAL -> ng add @angular/material@14
+instalando o MATERIAL -> ng add @angular/material@14 ,  confirmar todas as requisições
+
+
+
+
 No modulo administrativo, incluir no vetor IMPORTS o modulo do componente Material desejado e importar no arquivo onde vai ser implementado
 criar o módulo administrativo -> ng generate module administrativo --routing
 criar o componente principal do módulo -> ng g c administrativo, este compenente irá agrupar todos os outros componentes
@@ -35,9 +40,6 @@ no arquivo html vincular o formulário com os campos do model
 
 
 
-
-
-
 ng generate module lgpd --routing
 criar o componente principal do módulo -> ng g c lgpd
 ng g c lgpd/portabilidade
@@ -49,6 +51,19 @@ injetar router no componente principal no constructor -> private router: Router
 
 no administrativo.module, inserir o "import { FormsModule } from '@angular/forms';" para vincular o formModel para componente do moódulo administrativo
 no administrativo.module, no array Imports insira a "FormsModule"
+
+
+
+
+
+"styles": [
+   "node_modules/bootstrap/dist/css/bootstrap.css",
+   "src/styles.css"
+],
+"scripts": [
+   "node_modules/jquery/dist/jquery.js",
+   "node_modules/popper.js/dist/umd/popper.js",
+   "node_modules/bootstrap/dist/js/bootstrap.js"
 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
