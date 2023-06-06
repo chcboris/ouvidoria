@@ -6,25 +6,43 @@ instalar dependencias npm install bootstrap jquery@3.3.1 popper.js@1.14.3 --save
 configurar o angular.json (verificar a linha 59)
 Configurando o  font-awesome -> compartilhando o boot strap por toda aplicação através do arquivo angular.json através do atributo style -> “./node_modules/font-awesome/CSS/font-awesome.CSS”
 instalando o MATERIAL -> ng add @angular/material@14 ,  confirmar todas as requisições
-
-
-
-
-No modulo administrativo, incluir no vetor IMPORTS o modulo do componente Material desejado e importar no arquivo onde vai ser implementado
 criar o módulo administrativo -> ng generate module administrativo --routing
 criar o componente principal do módulo -> ng g c administrativo, este compenente irá agrupar todos os outros componentes
-exportar componente administrativo, no modulo do componente e dentro NgModule, vamos colocá-lo no atributo exports.
+declarar componente AdmOcorrenciaComponent, no modulo do componente principal, vetor declarations do NgModule
+exportar componente AdmOcorrenciaComponent, no modulo do componente principal, vetor exports do NgModule
 no app.module, que é o principal módulo do nosso projeto, na raiz, no app.module.ts, podemos importar o  modulo administrativo.
-inclui o componente sugestao -> ng g c administrativo/denuncia
-inclui o componente denuncia -> ng g c administrativo/sugestao
-inclui o componente denuncia -> ng g c administrativo/reclamacao
-inclui o componente denuncia -> ng g c administrativo/resultado
-inclui o componente denuncia -> ng g c administrativo/seletor
+inclui o componente edicao -> ng g c adm-ocorrencia/edicao
+inclui o componente cadastro -> ng g c adm-ocorrencia/cadastro
+inclui o componente visualizacao -> ng g c adm-ocorrencia/visualizacao
+No módulo do componente principal, definir as rotas filhas dos compoentenes no adm-ocorrencia-routing.module
+No modulo administrativo, incluir no vetor IMPORTS o modulo do componente Material desejado e importar no arquivo onde vai ser implementado
+No modulo administrativo, incluir no vetor IMPORTS o modulo do componente Material desejado e importar no arquivo onde vai ser implementado
+
+
+
+
 aplicar a técnica lazy load, no ‘app.component.html’ vamos utilizar uma diretiva do Angular chamada router outlet. Digitamos <router-outlet></router-outlet>.
 app-routing-module e vamos no nosso array de rotas ...
 no administrativo-routing-module será definida as rotas filhas
 no componenete administrativo colara a tag  <router-outlet></router-outlet>.
 injetar router no componente principal no constructor -> private router: Router
+
+
+
+
+No modulo administrativo, incluir no vetor IMPORTS o modulo do componente Material desejado e importar no arquivo onde vai ser implementado
+***************************** criar o módulo administrativo -> ng generate module administrativo --routing
+***************************** criar o componente principal do módulo -> ng g c administrativo, este compenente irá agrupar todos os outros componentes
+***************************** exportar componente administrativo, no modulo do componente e dentro NgModule, vamos colocá-lo no atributo exports.
+***************************** no app.module, que é o principal módulo do nosso projeto, na raiz, no app.module.ts, podemos importar o  modulo administrativo.
+***************************** inclui o componente sugestao -> ng g c administrativo/denuncia
+***************************** inclui o componente denuncia -> ng g c administrativo/sugestao
+***************************** inclui o componente denuncia -> ng g c administrativo/reclamacao
+***************************** aplicar a técnica lazy load, no ‘app.component.html’ vamos utilizar uma diretiva do Angular chamada router outlet. Digitamos <router-outlet></router-outlet>.
+***************************** app-routing-module e vamos no nosso array de rotas ...
+***************************** no administrativo-routing-module será definida as rotas filhas
+***************************** no componenete administrativo colara a tag  <router-outlet></router-outlet>.
+***************************** injetar router no componente principal no constructor -> private router: Router
 no administrativo.module, inserir o "import { FormsModule } from '@angular/forms';" para vincular o formModel para componente do moódulo administrativo
 no administrativo.module, no array Imports insira a "FormsModule"
 criar o campo sel no componente seletor, este campo ser usado para rotear os componetes
