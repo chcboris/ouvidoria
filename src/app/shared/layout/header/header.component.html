@@ -1,0 +1,23 @@
+
+<nav>
+  <mat-toolbar color="primary" class="corMatBar">
+    <mat-toolbar-row>
+      <div class="col-6">
+        <h1>
+          <div class="hstack gap-2">
+            <img src="./assets/img/logoJE.png" style="height: 44px;" aria-hidden="true" alt="Logotipo da Justiça Eleitoral">
+            {{aplicacao}}
+            <div class="vr"></div>
+            <span class="text-info">TRE-RJ</span>
+          </div>
+        </h1>
+       </div>
+       <div class="col-6">
+          <div class="alinharDireita tamanhoFonte">
+            <span>Versão: {{ versao }}</span><br>
+            <span>{{ ambiente }}</span>
+          </div>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</nav>

@@ -1,5 +1,73 @@
 <p>visualizacao works!</p>
 
-<button mat-raised-button color="primary" class="m-2">
-    Cadastrar
-  </button>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+  <table mat-table [dataSource]="dataSource" class="tabela border border_vertical">
+    <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container matColumnDef="entrada">
+      <th mat-header-cell *matHeaderCellDef>Entrada</th>
+      <td mat-cell *matCellDef="let element">{{ element.entrada }}</td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let element">{{ element.nome }}</td>
+    </ng-container>
+
+    <!-- Name Column
+    <ng-container matColumnDef="documento">
+      <th mat-header-cell *matHeaderCellDef>Documento</th>
+      <td mat-cell *matCellDef="let element">{{ element.documento }}</td>
+    </ng-container>
+
+    Weight Column
+    <ng-container matColumnDef="numero">
+      <th mat-header-cell *matHeaderCellDef>Número</th>
+      <td mat-cell *matCellDef="let element">{{ element.numero }}</td>
+    </ng-container>
+-->
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="destino">
+      <th mat-header-cell *matHeaderCellDef>Destino</th>
+      <td mat-cell *matCellDef="let element">{{ element.destino }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="detalhe">
+      <th mat-header-cell *matHeaderCellDef>Update</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="accent" (click)="openDialog()">
+            <mat-icon class="mat-18">system_update</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <div class="d-flex flex-row-reverse">
+    <button
+      mat-fab
+      class="align-bottom m-3"
+      color="primary"
+      aria-label="Example icon button with a delete icon"
+      (click)="adicionarVisitante()"
+    >
+      <mat-icon>people</mat-icon>
+    </button>
+  </div>
+</div>
+
+</div>
+</div>
+
+
+
+<p>https://www.angularjswiki.com/material/mat-table-filter/</p>
+<p>https://code-maze.com/angular-material-table/</p>
+<p>https://getbootstrap.com/docs/5.0/components/modal/</p>
+

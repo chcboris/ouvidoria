@@ -1,1 +1,151 @@
-<p>cadastro works!</p>
+<div class="d-flex flex-row mb-3">
+    <div class="container-fluid">
+<form [formGroup]="novoUsuarioForm">
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Nome:</mat-label>
+          <input
+            matInput
+            placeholder="xxxx"
+            style="width: 200px"
+            formControlName="nome"
+            id="nome"
+          />
+          <mat-error *ngIf="nome?.errors?.['required']"
+            >Preenchimento obrigatório</mat-error
+          >
+        </mat-form-field>
+
+        <div class="row">
+          <div class="col-sm-12 col-md-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Documento</mat-label>
+              <mat-select formControlName="documento">
+                <mat-option value="one">CPF</mat-option>
+                <mat-option value="two">RG</mat-option>
+                <mat-option value="two">CNH</mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="novoUsuarioForm.get('documento')?.errors?.['required']"
+                >Preenchimento obrigatório</mat-error
+              >
+            </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-8">
+            <mat-form-field appearance="outline">
+              <mat-label>Número do Documento</mat-label>
+              <input
+                matInput
+                placeholder="1020079-8"
+                formControlName="numeroDoc"
+              />
+              <mat-error
+                *ngIf="novoUsuarioForm.get('documento')?.errors?.['required']"
+                >Preenchimento obrigatório</mat-error
+              >
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 col-md-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Telefone:</mat-label>
+              <input
+                matInput
+                placeholder="2375506"
+                formControlName="telefone"
+                [value]="novoUsuarioForm.get('telefone')?.value | fone"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-8">
+            <mat-form-field appearance="outline">
+              <mat-label>Empresa:</mat-label>
+              <input matInput placeholder="xxx" formControlName="empresa" />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Destino:</mat-label>
+          <input
+            matInput
+            [matAutocomplete]="auto2"
+            formControlName="destino"
+          />
+          <mat-error
+            *ngIf="novoUsuarioForm.get('documento')?.errors?.['required']"
+            >Preenchimento obrigatório</mat-error
+          >
+        </mat-form-field>
+
+        <div class="row">
+          <div class="col-sm-12 col-md-10">
+            <mat-form-field appearance="outline">
+              <mat-label>Contato:</mat-label>
+              <input
+                matInput
+                [matAutocomplete]="auto2"
+                formControlName="contato"
+              />
+              <mat-error
+                *ngIf="novoUsuarioForm.get('documento')?.errors?.['required']"
+                >Preenchimento obrigatório</mat-error
+              >
+            </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-2">
+            <mat-form-field appearance="outline">
+              <mat-label>Ramal</mat-label>
+              <input matInput placeholder="8342" formControlName="ramal" />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 p-3">
+        <mat-card style="height: 75%">Simple card</mat-card>
+
+        <div class="d-flex justify-content-end">
+          <button mat-mini-fab color="primary" aria-label="Fotografar" class="m-2">
+            <mat-icon>camera_alt</mat-icon>
+          </button>
+
+          <button mat-mini-fab color="primary" aria-label="Limpar foto" class="m-2">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row mp-3">
+      <div class="col-md-4">
+    <div class="d-flex justify-content-center">
+      <button
+        mat-raised-button
+        color="primary"
+        class="m-2"
+        (click)="cadastrar()"
+        [disabled]="!novoUsuarioForm.valid"
+      >
+        Cadastrar
+      </button>
+      <button mat-raised-button color="primary" class="m-2" (click)="cancelar()">
+        Cancelar
+      </button>
+    </div>
+  </div>
+    </div>
+  </form>
+</div>
+</div>
+{{novoUsuarioForm.valid}}
+<mat-autocomplete #auto2="matAutocomplete">
+<mat-option *ngFor="let option of options" [value]="option">
+  {{ option }}
+</mat-option>
+</mat-autocomplete>
+
