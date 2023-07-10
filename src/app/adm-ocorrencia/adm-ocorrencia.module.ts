@@ -19,6 +19,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import { SharedModule } from '../shared/shared.module';
+import {MatMenuModule} from '@angular/material/menu'; 
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SharedModule } from '../shared/shared.module';
     MatFormFieldModule,
     MatSelectModule,
     MatCardModule,
-    MatDialogModule  
+    MatDialogModule,
+    MatMenuModule
   ],
   exports:[
     CadastroComponent
